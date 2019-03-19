@@ -13,7 +13,7 @@ import android.view.animation.LinearInterpolator;
 /**
  * 新人匹配动画界面
  */
-public class WaveBezierView extends View  {
+public class WaveBezierView extends View implements View.OnClickListener {
     private Path mPath;
     private Paint mPaintBezier, mPaintWhite;
 
@@ -69,7 +69,7 @@ public class WaveBezierView extends View  {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mPath = new Path();
-
+        setOnClickListener(this);
         mWhitePath = new Path();
         mWhitePath2 = new Path();
 
@@ -160,5 +160,10 @@ public class WaveBezierView extends View  {
         if (mValueAnimator.isRunning() && mValueAnimator != null) {
             mValueAnimator.cancel();
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        startAnim();
     }
 }
