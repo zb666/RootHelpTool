@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:gravity="center"
+              android:background="@android:color/black"
+              android:orientation="vertical"
+              android:layout_height="match_parent">
+
+    <com.example.mechrevo.roothelptool.MyView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            android:id="@+id/myview"/>
+
+    <TextView
+            android:id="@+id/tvcheckSuperuserApk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="checkSuperuserApk"
+    />
+
+    <TextView
+            android:id="@+id/tvcheckRootPathSU"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="checkRootPathSU"
+    />
+
+    <TextView
+            android:id="@+id/tvcheckRootWhichSU"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="checkRootWhichSU"
+    />
+
+    <TextView
+            android:id="@+id/tvexecuteCommand"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="executeCommand"
+    />
+
+    <TextView
+            android:id="@+id/tvcheckGetRootAuth"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="checkGetRootAuth"
+    />
+
+    <TextView
+            android:id="@+id/tvcheckBusybox"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="checkBusybox"
+    />
+
+    <TextView
+            android:id="@+id/tvcheckAccessRootData"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="checkAccessRootData"
+    />
+
+    <TextView
+            android:id="@+id/tvwriteFile"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="checkAccessRootData"
+    />
+
+
+    <TextView
+            android:id="@+id/tvreadFile"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:visibility="gone"
+
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="readFile"
+    />
+
+    <TextView
+            android:id="@+id/isDeviceRooted"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="是否Root了?"
+    />
+
+
+    <com.example.mechrevo.roothelptool.WaveBezierView
+            android:id="@+id/bezierview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
