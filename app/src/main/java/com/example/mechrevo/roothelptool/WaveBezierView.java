@@ -102,8 +102,8 @@ public class WaveBezierView extends View implements View.OnClickListener {
         mWhitePath2.reset();
         //Y坐标每次绘制时减去偏移量，即波浪升高
         mPath.moveTo(-mWaveLength + mOffsetX, mCenterY);
-        mWhitePath.moveTo((-mWaveLength + mOffsetX) / 3, mCenterY);
-        mWhitePath2.moveTo((float) ((-mWaveLength + mOffsetX) * 1.2), mCenterY);
+        mWhitePath.moveTo((float) ((-mWaveLength + mOffsetX) * 2), mCenterY);
+        mWhitePath2.moveTo((float) ((-mWaveLength + mOffsetX) * 1.5), mCenterY);
         //每次循环绘制两个二阶贝塞尔曲线形成一个完整波形（含有一个上拱圆，一个下拱圆）
         for (int i = 0; i < mWaveCount; i++) {
             mPath.rQuadTo(mWaveLength / 4, -120, mWaveLength / 2, 0);
@@ -127,8 +127,6 @@ public class WaveBezierView extends View implements View.OnClickListener {
         canvas.drawPath(mWhitePath, mPaintWhite);
         canvas.drawPath(mWhitePath2, mPaintWhite);
     }
-
-
 
     public void startAnim() {
         if (mValueAnimator == null) {
