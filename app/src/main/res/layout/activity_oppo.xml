@@ -2,21 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:gravity="center"
-              android:background="@android:color/black"
               android:orientation="vertical"
               android:layout_height="match_parent">
-
-    <com.example.mechrevo.roothelptool.MyView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:visibility="gone"
-            android:id="@+id/myview"/>
 
     <TextView
             android:id="@+id/tvcheckSuperuserApk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="checkSuperuserApk"
+            android:text="开启"
     />
 
     <TextView
@@ -25,7 +18,7 @@
             android:gravity="center"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:text="checkRootPathSU"
+            android:text="关闭"
     />
 
     <TextView
@@ -36,6 +29,12 @@
             android:layout_height="40dp"
             android:text="checkRootWhichSU"
     />
+
+    <com.example.mechrevo.roothelptool.MyView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            android:id="@+id/myview"/>
 
     <TextView
             android:id="@+id/tvexecuteCommand"

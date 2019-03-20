@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 
 /**
@@ -155,7 +154,7 @@ public class WaveBezierView extends View implements View.OnClickListener {
      * 取消播放
      */
     public void cancalAnim() {
-        if (mValueAnimator.isRunning() && mValueAnimator != null) {
+        if (mValueAnimator!=null && mValueAnimator.isRunning()) {
             mValueAnimator.cancel();
         }
     }

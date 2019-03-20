@@ -3,6 +3,7 @@ package com.example.mechrevo.roothelptool;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.mechrevo.roothelptool.dialogfm.BaseDialogFragment;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -61,10 +63,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvcheckRootWhichSU.setOnClickListener(this);
         isDeviceRooted.setOnClickListener(this);
 
-        int[] fun = {0,1,2,3,4,5,6};
-        int[] fun2 = {1,1,1,1,1};
+        int[] fun = {0, 1, 2, 3, 4, 5, 6};
+        int[] fun2 = {1, 1, 1, 1, 1};
         // 从src 数组的 第二位开始进行拷贝，赋值给des数组的第1-3位
-        System.arraycopy(fun,2,fun2,1,3);
+        System.arraycopy(fun, 2, fun2, 1, 3);
 
         WindowManager wm = (WindowManager) this
                 .getSystemService(Context.WINDOW_SERVICE);
@@ -73,6 +75,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MyView myView = findViewById(R.id.myview);
         myView.startAnim();
+
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+//                try {
+////                    Thread.sleep(5000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+            }
+
+            @Override
+            public String toString() {
+                return "MainOne";
+            }
+        });
+
+        final long start = System.currentTimeMillis();
+        Log.d("BobMain", start + "");
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //照道理 是延时1秒
+                Log.d("BobMain", System.currentTimeMillis() + start + "");
+            }
+        }, 1000);
+
     }
 
     @Override
@@ -83,14 +113,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 boolean deviceRooted = isDeviceRooted();
                 TextView textView = (findViewById(R.id.isDeviceRooted));
                 textView.setText(deviceRooted ? "是" : "否");
-                startActivity(new Intent(this,GuideActivity.class));
+                startActivity(new Intent(this, GuideActivity.class));
                 finish();
                 break;
             case R.id.tvcheckSuperuserApk:
-                tvcheckSuperuserApk.setText(isTrue(checkSuperuserApk()));
+//                tvcheckSuperuserApk.setText(isTrue(checkSuperuserApk()));
+                BaseDialogFragment.showDialog(this);
                 break;
             case R.id.tvcheckRootPathSU:
-                tvcheckRootPathSU.setText(isTrue(checkRootPathSU()));
+                BaseDialogFragment.cancleDialog();
                 break;
             case R.id.tvcheckRootWhichSU:
                 tvcheckRootWhichSU.setText(isTrue(checkRootWhichSU()));
@@ -135,7 +166,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         return false;
     }
-
 
 
     public static boolean checkSuperuserApk() {
@@ -325,7 +355,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void toast(String toast){
-        Toast.makeText(this,toast,Toast.LENGTH_SHORT).show();
+    public void toast(String toast) {
+//        Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
     }
 }
