@@ -1,5 +1,8 @@
 package com.example.mechrevo.roothelptool;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.mechrevo.roothelptool.dialogfm.BaseDialogFragment;
+import com.example.mechrevo.roothelptool.service.JobSchedulerService;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -103,6 +107,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }, 1000);
 
+        findViewById(R.id.tvServcice).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jobService();
+            }
+        });
+
+    }
+
+    private void jobService() {
+        ComponentName componentName = new ComponentName(this,JobSchedulerService.class);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            JobInfo jobInfo = new JobInfo.Builder(1,componentName)
+                    .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                    .setPeriodic(1000*3)
+                    .setRequiresDeviceIdle(true)
+                    .setRequiresCharging(true)
+                    .build();
+            JobScheduler scheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+            int schedule = scheduler.schedule(jobInfo);
+            if (schedule == JobScheduler.RESULT_SUCCESS){
+                Log.d("BobService","服务启动成功了");
+            }
+        }
     }
 
     @Override

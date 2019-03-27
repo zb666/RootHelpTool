@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
+              android:background="@android:color/white"
+              android:orientation="vertical"
               android:layout_height="match_parent">
 
+    <TextView
+            android:id="@+id/tvJoin"
+            android:layout_width="match_parent"
+              android:text="加入频道"
+              android:layout_height="@dimen/dp_40"/>
+    <TextView
+            android:id="@+id/tvLevel"
+            android:layout_width="match_parent"
+           android:text="离开频道"
+            android:layout_height="@dimen/dp_40"/>
+
+    <TextView
+            android:id="@+id/tvRecord"
+            android:layout_width="match_parent"
+            android:text="点击录音 放开结束录音"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_height="@dimen/dp_40"/>
+    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                            android:overScrollMode="never"
+                                            android:id="@+id/rv_guide"
+                                            android:background="@android:color/white"
+                                            android:layout_height="wrap_content"/>
 </LinearLayout>

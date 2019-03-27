@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@android:color/white"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="125dp">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_height="match_parent">
+
+        <View android:layout_width="1dp"
+              android:background="@color/colorStart"
+              android:layout_height="match_parent"/>
+
+        <TextView android:layout_width="0dp"
+                  android:layout_weight="1"
+                  android:layout_height="match_parent"
+                  android:text="很多事范德萨"
+                  android:gravity="center"/>
+
+        <View android:layout_width="1dp"
+              android:background="@color/colorStart"
+              android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <View android:layout_width="match_parent"
+          android:background="@color/colorStart"
+          android:layout_height="1dp"/>
+
+</LinearLayout>
