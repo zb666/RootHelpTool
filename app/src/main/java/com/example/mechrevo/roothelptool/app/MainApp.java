@@ -5,9 +5,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Environment;
+import android.os.Looper;
 import android.text.TextUtils;
 import com.example.mechrevo.roothelptool.MainActivity;
 import com.example.mechrevo.roothelptool.R;
+import com.example.mechrevo.roothelptool.block.AppBlockCanaryContext;
+import com.github.moduth.blockcanary.BlockCanary;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.NIMSDK;
 import com.netease.nimlib.sdk.SDKOptions;
@@ -17,6 +20,7 @@ import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 import com.netease.nimlib.sdk.uinfo.UserInfoProvider;
 import com.netease.nimlib.sdk.uinfo.model.UserInfo;
 import com.netease.nimlib.sdk.util.NIMUtil;
+import com.squareup.leakcanary.LeakCanary;
 import io.agora.rtc.Constants;
 import io.agora.rtc.IRtcEngineEventHandler;
 import io.agora.rtc.RtcEngine;
@@ -38,7 +42,11 @@ public class MainApp extends Application {
             // 注意：以下操作必须在主进程中进行
             // 1、UI相关初始化操作
             // 2、相关Service调用
+            if (!LeakCanary.isInAnalyzerProcess(this)) {
+                LeakCanary.install(this);
+            }
         }
+        BlockCanary.install(this,new AppBlockCanaryContext()).start();
     }
 
     // 如果返回值为 null，则全部使用默认参数。

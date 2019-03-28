@@ -51,4 +51,5 @@ dependencies {
     // 音视频需要
     compile 'com.netease.nimlib:avchat:6.1.0'
 
+    debugCompile 'com.github.markzhai:blockcanary-android:1.5.0'
 }

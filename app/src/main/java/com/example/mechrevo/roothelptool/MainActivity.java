@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.mechrevo.roothelptool.dialogfm.BaseDialogFragment;
 import com.example.mechrevo.roothelptool.service.JobSchedulerService;
+import com.netease.nrtc.base.annotation.IntDef;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -37,13 +39,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private WaveBezierViewTwo waveBezierViewTwo;
     private WaveBezierViewone waveBezierViewone;
 
+    private static Context sContent;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oppo);
 
+        test(TestAnnotation.STATUS_OFF);
+
         mainPresenter = new MainPresenter(this);
         mainPresenter.startWork();
+
+        SystemClock.sleep(6000);
+        sContent = this;
 
         tvcheckSuperuserApk = findViewById(R.id.tvcheckSuperuserApk);
         tvcheckRootPathSU = findViewById(R.id.tvcheckRootPathSU);
@@ -141,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 boolean deviceRooted = isDeviceRooted();
                 TextView textView = (findViewById(R.id.isDeviceRooted));
                 textView.setText(deviceRooted ? "是" : "否");
-                startActivity(new Intent(this, GuideActivity.class));
+                startActivity(new Intent(this, SdkActivity.class));
                 finish();
                 break;
             case R.id.tvcheckSuperuserApk:
@@ -385,5 +394,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void toast(String toast) {
 //        Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+    }
+
+
+    //使用的枚举 必须是Status注解中其中的一个
+
+    /**
+     *  status注解中的一个 即STATUS_ON,以及STATUS_OFF中的一个
+     *  如果超出了这两个的范围编译器会报错
+     * @param type
+     */
+    private void test(@TestAnnotation.Status int type) {
+        switch (type) {
+            case TestAnnotation.STATUS_ON:
+                Log.d("Status","STATUS_ON");
+                break;
+            case TestAnnotation.STATUS_OFF:
+                Log.d("Status","STATUS_OFF");
+                break;
+        }
     }
 }
