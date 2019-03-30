@@ -5,14 +5,20 @@ import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.mechrevo.roothelptool.dialogfm.BaseDialogFragment;
@@ -37,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView isDeviceRooted;
     private MainPresenter mainPresenter;
     private WaveBezierViewTwo waveBezierViewTwo;
-    private WaveBezierViewone waveBezierViewone;
+//    private WaveBezierViewone waveBezierViewone;
 
     private static Context sContent;
 
@@ -45,6 +51,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oppo);
+
+        //VectorDrawable矢量动画
+        final ImageView imageView = findViewById(R.id.imageview);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Drawable drawable = imageView.getDrawable();
+                if (drawable instanceof Animatable){
+                    ((Animatable)drawable).start();
+                }
+            }
+        });
+
 
         test(TestAnnotation.STATUS_OFF);
 

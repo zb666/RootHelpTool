@@ -9,6 +9,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
         applicationId "com.example.mechrevo.roothelptool"
         minSdkVersion 15
         targetSdkVersion 28
